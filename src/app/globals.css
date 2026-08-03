@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --text-purple: #9333ea;
+  --glow-orange: #ff4c29;
+}
+
+/* Tailwind v4 Configuration Directive */
+@theme inline {
+  --font-sans: var(--font-jakarta), sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+@utility neural-web-bg {
+  background-image: url('/assets/neural-web.png');
+  background-repeat: repeat;
+  background-size: cover;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.floating-logo {
+  transform-origin: center;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.floating-logo img {
+  user-select: none;
+  pointer-events: none;
+  transition: filter 0.3s ease;
+}
+
+.floating-logo:hover img {
+  filter: brightness(1.05);
+}
+
+.footer-wave {
+  clip-path: ellipse(64% 86% at 50% 0%);
+}
+
+/* New neuron backdrop helpers keep the image atmospheric without competing with content. */
+.neuron-backdrop {
+  filter: saturate(1.08) contrast(1.02);
+  mix-blend-mode: multiply;
+  transform-origin: center;
+}
+
+/* New shimmer layer gives the neuron artwork a slow premium glass-like light pass. */
+.neuron-backdrop::after {
+  animation: neuronShimmer 9s ease-in-out infinite;
+  background: radial-gradient(circle at 45% 50%, rgba(255, 255, 255, 0.72), transparent 42%);
+  content: "";
+  inset: 0;
+  opacity: 0.32;
+  pointer-events: none;
+  position: absolute;
+}
+
+@keyframes neuronShimmer {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: translate3d(-8%, -4%, 0) scale(0.94);
+  }
+
+  50% {
+    opacity: 0.38;
+    transform: translate3d(8%, 5%, 0) scale(1.04);
+  }
+}
+
+/* Lenis Smooth Scroll Setup */
+html.lenis,
+html.lenis body {
+  height: auto !important;
+  min-height: 100% !important;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
