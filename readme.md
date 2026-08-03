@@ -141,7 +141,7 @@ All website content is centralized in `src/data/` for easy editing:
 
 ## 🖼️ Screenshot
 
-![MyelinSheets Homepage](public/assets/Screenshot_2026-06-24_140707.png)
+![MyelinSheets Homepage](public/assets/webpage_ss.png)
 
 ---
 
