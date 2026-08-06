@@ -1,7 +1,7 @@
 import React from "react";
 import SmoothScroll from "@/components/SmoothScroll";
 import ClientFloatingLogos from "@/components/ClientFloatingLogos";
-import "@/app/globals.css";
+import "./globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
 const jakartaSans = Plus_Jakarta_Sans({
