@@ -49,6 +49,7 @@ The brand translates published neuromarketing research into strategic decisions 
 │   │   ├── case-studies/       # Case studies grid
 │   │   │   └── [slug]/         # Dynamic case study detail page
 │   │   ├── contact/            # Contact / discovery call page
+|   |   ├── founders/           # Founders Page
 │   │   ├── industries/         # Industries page
 │   │   ├── services/           # Services page
 │   │   ├── globals.css         # Global styles (Tailwind v4, Lenis, animations)
