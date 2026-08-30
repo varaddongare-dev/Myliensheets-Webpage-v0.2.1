@@ -14,7 +14,7 @@ const founders = [
   },
   {
     name: "Hrutuja Dongare",
-    role: "Co-Founder & Neuroscientist",
+    role: "Co-Founder & Neuropsychologist",
     image: "/assets/hd.png",
     bio: "Specializing in cognitive neuroscience and EEG methodologies, bridging clinical neural research with commercial brand architecture.",
     expertise: ["EEG Analysis", "Cognitive Priming", "Sensory Processing"],
