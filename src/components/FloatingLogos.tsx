@@ -107,8 +107,9 @@ export default function FloatingLogos() {
         }
       `}</style>
 
+      {/* Hidden on mobile viewports (<768px), visible on md+ screens */}
       <div
-        className="fixed inset-0 z-30 h-screen w-screen overflow-hidden pointer-events-none select-none"
+        className="hidden md:block fixed inset-0 z-30 h-screen w-screen overflow-hidden pointer-events-none select-none"
         aria-hidden="true"
       >
         {LOGO_CONFIG.map((logo) => {
@@ -132,7 +133,7 @@ export default function FloatingLogos() {
                 alt=""
                 draggable={false}
                 loading="eager"
-                className="h-auto w-10 sm:w-12 md:w-14 lg:w-16 object-contain opacity-75 transition-opacity duration-200 hover:opacity-100 drop-shadow-[0_4px_12px_rgba(0,0,0,0.06)]"
+                className="h-auto w-12 md:w-14 lg:w-16 object-contain opacity-75 transition-opacity duration-200 hover:opacity-100 drop-shadow-[0_4px_12px_rgba(0,0,0,0.06)]"
               />
             </Link>
           );

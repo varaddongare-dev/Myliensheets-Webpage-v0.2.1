@@ -1,195 +1,253 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { SiteShell } from "@/components/SiteShell";
-import { principles, researchTools, services, serviceSteps } from "@/data/siteContent";
 
-export default function ServicesPage(): React.JSX.Element {
+const services = [
+  {
+    number: "01",
+    icon: "👁",
+    title: "Ad & Creative Testing",
+    hook: "Know how it lands before you spend.",
+    badge: "40% avg. improvement in ad recall",
+    description:
+      "Before you spend on media, know exactly how your creative lands in the brain. We use EEG, eye-tracking, and behavioural data to measure genuine emotional response, attention peaks, and memory encoding — not what people say they feel.",
+  },
+  {
+    number: "02",
+    icon: "📦",
+    title: "Packaging Neuroscience",
+    hook: "What your pack says without words.",
+    badge: "Used by Frito-Lay, Campbell's, & more",
+    description:
+      "Your packaging is having a subconscious conversation with every customer's brain right now. We measure guilt responses, desire triggers, and attention allocation to optimise packaging for genuine neural engagement.",
+  },
+  {
+    number: "03",
+    icon: "🧭",
+    title: "Brand Perception Mapping",
+    hook: "What they feel vs. what you think they feel.",
+    badge: "Neural brand audits in 4 weeks",
+    description:
+      "Map exactly what emotional and cognitive associations your brand triggers in your target audience's brain. Compare against competitors at a neural level. Understand what you're actually communicating vs. what you think you are.",
+  },
+  {
+    number: "04",
+    icon: "🔬",
+    title: "Consumer Behaviour Research",
+    hook: "The decision your data never saw.",
+    badge: "95% of decisions are subconscious",
+    description:
+      "Go beyond surveys and focus groups. We measure actual decision-making at the neural level — revealing the subconscious triggers, cognitive biases, and emotional drivers behind every purchase decision your customer makes.",
+  },
+  {
+    number: "05",
+    icon: "💻",
+    title: "UX & Digital Neuromarketing",
+    hook: "Every pixel is a conversation.",
+    badge: "Google moved $200M with one tweak",
+    description:
+      "Test your website, app, and digital ads using eye-tracking and behavioural data to measure visual attention, cognitive load, and emotional response — page by page, element by element.",
+  },
+  {
+    number: "06",
+    icon: "📈",
+    title: "Campaign Strategy Consulting",
+    hook: "Built around how the brain decides.",
+    badge: "End-to-end neuro-informed strategy",
+    description:
+      "Translate neural data into actionable creative briefs, messaging hierarchies, and campaign architectures. We build marketing strategy around how the brain actually makes decisions — not how marketers assume it does.",
+  },
+];
+
+const steps = [
+  {
+    step: "01",
+    title: "Discovery",
+    desc: "We map your brand, audience, and marketing challenge in depth before recommending anything.",
+  },
+  {
+    step: "02",
+    title: "Research Design",
+    desc: "We design the right neuromarketing methodology for your specific question and audience.",
+  },
+  {
+    step: "03",
+    title: "Testing",
+    desc: "We run EEG, eye-tracking, or behavioural studies with your exact target audience.",
+  },
+  {
+    step: "04",
+    title: "Strategy Delivery",
+    desc: "Neural insights translated into actionable creative briefs, messaging hierarchies, and brand strategy.",
+  },
+];
+
+export default function ServicesPage() {
   return (
     <SiteShell activeHref="/services">
-      <section className="relative mx-auto w-full max-w-[1180px] overflow-hidden px-6 pb-16 pt-20 sm:px-8 md:px-10 md:pt-24 lg:px-12">
-        <div className="pointer-events-none absolute inset-0 -z-10 select-none opacity-40 mix-blend-multiply dark:opacity-20">
-          <svg
-            className="absolute -right-20 top-0 h-[600px] w-[600px] text-[#56708f]/10"
-            viewBox="0 0 400 400"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path 
-              d="M100,80 Q140,40 200,80 T300,80" 
-              strokeDasharray="4 4"
-              className="animate-[dash_60s_linear_infinite]"
-            />
-            <path d="M140,40 Q180,120 220,60 T320,120" />
-            <path d="M200,80 Q220,160 180,220 T260,300" />
-            <path d="M180,220 Q120,260 140,340" />
-            <circle cx="100" cy="80" r="3" fill="currentColor" className="animate-pulse" />
-            <circle cx="140" cy="40" r="3" fill="currentColor" />
-            <circle cx="200" cy="80" r="4" fill="currentColor" className="animate-pulse delay-75" />
-            <circle cx="300" cy="80" r="3" fill="currentColor" />
-            <circle cx="220" cy="60" r="3" fill="currentColor" />
-            <circle cx="320" cy="120" r="3" fill="currentColor" />
-            <circle cx="180" cy="220" r="4" fill="currentColor" className="animate-pulse delay-150" />
-            <circle cx="260" cy="300" r="3" fill="currentColor" />
-            <circle cx="140" cy="340" r="3" fill="currentColor" />
-          </svg>
-        </div>
+      {/* 3D Flip Styles */}
+      <style jsx global>{`
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        .transform-style-3d {
+          transform-style: preserve-3d;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+          transform: rotateY(180deg);
+        }
+        .group:hover .group-hover\\:rotate-y-180 {
+          transform: rotateY(180deg);
+        }
+      `}</style>
 
-        <div className="max-w-[840px]">
-          <p className="text-[12px] font-black uppercase tracking-[0.22em] text-[#56708f]">
-            What We Offer
-          </p>
-          <h1 className="mt-4 text-[42px] font-black leading-[0.96] tracking-[-0.04em] text-[#132033] sm:text-[58px] md:text-[74px]">
-            Services
-          </h1>
-          <p className="mt-6 max-w-[760px] text-[17px] font-medium leading-[1.7] text-[#4b607c] md:text-[19px]">
-            One mission: make your marketing work with the brain, not against it. Every
-            engagement is custom-scoped to the question you actually need answered.
-          </p>
-        </div>
-
-        <section className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <article
-              key={service.slug}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-[34px] border border-black/[0.04] bg-white/45 p-6 shadow-[0_8px_32px_0_rgba(0,0,0,0.04)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1 sm:p-8"
-            >
-              <div>
-                <div className="inline-flex items-center justify-center rounded-[14px] border border-[#132033]/10 bg-white px-3 py-1.5 text-xs font-bold text-[#344861]">
-                  <span className="mr-2">{service.emoji}</span>
-                  <span className="uppercase tracking-wider text-[10px] font-black">{service.metric}</span>
-                </div>
-                <h2 className="mt-6 text-2xl font-black tracking-tight text-[#132033]">
-                  {service.title}
-                </h2>
-                <p className="mt-3 text-[15px] font-semibold leading-snug text-[#344861]">
-                  {service.shortDescription}
-                </p>
-                <p className="mt-4 text-sm font-medium leading-relaxed text-[#56708f] opacity-100 transition-opacity duration-300 lg:group-hover:opacity-0">
-                  {service.description}
-                </p>
-              </div>
-
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-full flex-col justify-end bg-gradient-to-b from-[#132033]/95 to-[#162b44]/95 p-6 text-white transition-transform duration-300 ease-out group-hover:translate-y-0 sm:p-8 lg:pointer-events-auto">
-                <p className="text-[10px] font-black uppercase tracking-widest text-white/60">
-                  What It Does
-                </p>
-                <p className="mt-4 text-sm font-medium leading-relaxed text-white/90">
-                  {service.description}
-                </p>
-              </div>
-            </article>
-          ))}
-        </section>
-
-        <section className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-          <div className="rounded-[34px] border border-black/[0.04] bg-white/80 p-6 shadow-[0_8px_32px_0_rgba(0,0,0,0.04)] backdrop-blur-2xl sm:p-8">
-            <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[#7c8da5]">
-              How We Work
+      <div className="relative min-h-screen text-[#132033]">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-12 pb-24">
+          
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+            <span className="text-[11px] font-extrabold tracking-[0.25em] uppercase text-[#64748b] block mb-3">
+              WHAT WE OFFER
+            </span>
+            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl tracking-tight leading-[1.1] text-[#132033] mb-6">
+              Services
+            </h1>
+            <p className="text-base sm:text-lg text-[#51657f] leading-relaxed">
+              One mission — make your marketing work with the brain, not against it. Hover over each service to see the methodology.
             </p>
-            <div className="mt-6 space-y-3">
-              {serviceSteps.map((step, index) => (
+          </div>
+
+          {/* 3D Flip Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+            {services.map((svc) => (
+              <div
+                key={svc.number}
+                className="group h-[320px] w-full perspective-1000 cursor-pointer"
+              >
+                <div className="relative h-full w-full rounded-3xl transition-transform duration-700 transform-style-3d group-hover:rotate-y-180 shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-black/[0.06]">
+                  
+                  {/* FRONT FACE */}
+                  <div className="absolute inset-0 h-full w-full rounded-3xl bg-white p-7 flex flex-col justify-between backface-hidden">
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-xs font-mono font-bold text-slate-400">
+                          {svc.number}
+                        </span>
+                        <span className="text-2xl animate-pulse">{svc.icon}</span>
+                      </div>
+                      <h3 className="font-serif text-xl font-bold text-[#132033] mb-2 leading-tight">
+                        {svc.title}
+                      </h3>
+                      <p className="text-sm text-[#51657f] leading-relaxed">
+                        {svc.hook}
+                      </p>
+                    </div>
+
+                    <div>
+                      <span className="inline-block rounded-full bg-[#132033]/5 px-3 py-1 text-[11px] font-bold text-[#132033]">
+                        {svc.badge}
+                      </span>
+                      <div className="mt-4 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-[#132033] transition-colors">
+                        <span>Hover to inspect</span>
+                        <span>→</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* BACK FACE */}
+                  <div className="absolute inset-0 h-full w-full rounded-3xl bg-[#132033] p-7 text-white flex flex-col justify-between rotate-y-180 backface-hidden shadow-xl">
+                    <div>
+                      <div className="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
+                        <span className="text-xs font-mono font-bold text-slate-400">
+                          {svc.number} · Methodology
+                        </span>
+                        <span className="text-sm font-semibold text-slate-300">
+                          Deep Dive
+                        </span>
+                      </div>
+                      <h4 className="font-serif text-lg text-white mb-2 leading-snug">
+                        {svc.title}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                        {svc.description}
+                      </p>
+                    </div>
+
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-wider text-[#132033] hover:bg-slate-100 transition-colors"
+                    >
+                      Inquire for this →
+                    </Link>
+                  </div>
+
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* How We Work — 4 Steps */}
+          <div className="mb-24">
+            <div className="mb-12 text-center sm:text-left">
+              <span className="text-[11px] font-extrabold tracking-[0.25em] uppercase text-[#64748b] block mb-2">
+                THE PROCESS
+              </span>
+              <h2 className="font-serif text-2xl sm:text-4xl text-[#132033] tracking-tight">
+                How We Work
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {steps.map((s) => (
                 <div
-                  key={step}
-                  className="flex items-start gap-4 rounded-[22px] border border-[#132033]/5 bg-white/85 px-4 py-4 text-[15px] font-semibold leading-[1.6] text-[#2b3c54] shadow-[0_4px_12px_rgba(30,41,59,0.02)] backdrop-blur-xl"
+                  key={s.step}
+                  className="rounded-3xl bg-white border border-black/[0.06] p-6 sm:p-7 shadow-sm flex flex-col justify-between"
                 >
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#132033] text-[11px] font-black text-white">
-                    {index + 1}
+                  <span className="text-3xl font-serif text-[#132033]/20 font-bold block mb-4">
+                    {s.step}
                   </span>
-                  <span className="pt-0.5">{step}</span>
+                  <div>
+                    <h3 className="font-serif text-lg font-bold text-[#132033] mb-2">
+                      {s.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#51657f] leading-relaxed">
+                      {s.desc}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-col justify-between rounded-[34px] border border-black/[0.04] bg-gradient-to-b from-[#132033]/95 to-[#162b44]/95 p-6 text-white shadow-[0_16px_40px_rgba(19,32,51,0.18)] sm:p-8">
-            <div>
-              <p className="text-[12px] font-black uppercase tracking-[0.18em] text-white/60">
-                Custom-Scoped
-              </p>
-              <p className="mt-4 text-sm font-medium leading-relaxed text-white/90">
-                We do not have package pricing. Every engagement is scoped to your specific
-                research question, audience, and timeline. The discovery call helps us understand
-                your challenge before we design a proposal.
+          {/* Pricing Philosophy Box */}
+          <div className="rounded-3xl bg-slate-50 border border-black/[0.06] p-8 sm:p-12 max-w-4xl mx-auto shadow-sm flex flex-col sm:flex-row items-center justify-between gap-8">
+            <div className="max-w-xl text-center sm:text-left">
+              <span className="text-[10px] font-extrabold tracking-[0.2em] uppercase text-[#64748b] block mb-2">
+                ENGAGEMENT MODEL
+              </span>
+              <h3 className="font-serif text-2xl text-[#132033] mb-3">
+                Custom-scoped to your question.
+              </h3>
+              <p className="text-sm text-[#51657f] leading-relaxed">
+                We do not have package pricing — every engagement is scoped to your specific research question, audience, and timeline[cite: 1]. The discovery call helps us understand your challenge before we design a proposal[cite: 1].
               </p>
             </div>
             <Link
               href="/contact"
-              className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-xs font-extrabold uppercase tracking-[0.08em] text-[#132033] transition hover:-translate-y-0.5 hover:bg-white/90"
+              className="shrink-0 inline-flex rounded-full bg-[#132033] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#0f172a] transition-all active:scale-95"
             >
               Book a Discovery Call
             </Link>
           </div>
-        </section>
 
-        <section className="mt-10 rounded-[34px] border border-black/[0.04] bg-white/45 p-6 shadow-[0_8px_32px_0_rgba(0,0,0,0.04)] backdrop-blur-2xl sm:p-8 md:p-12">
-          <div className="max-w-2xl">
-            <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[#7c8da5]">
-              Research Tools We Use
-            </p>
-            <h2 className="mt-3 text-2xl font-black tracking-tight text-[#132033] sm:text-4xl">
-              Three tools. Matched to the question, not the trend.
-            </h2>
-          </div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {researchTools.map((tool) => (
-              <article
-                key={tool.name}
-                className="group relative overflow-hidden rounded-[28px] border border-black/[0.04] bg-white/85 p-6 shadow-[0_12px_34px_rgba(30,41,59,0.05)] backdrop-blur-xl"
-              >
-                <p className="text-[10px] font-black uppercase tracking-wider text-[#7c8da5]">
-                  {tool.fullName}
-                </p>
-                <h3 className="mt-2 text-xl font-black tracking-tight text-[#132033]">
-                  {tool.name}
-                </h3>
-                <p className="mt-3 text-[15px] font-medium leading-relaxed text-[#344861]">
-                  {tool.description}
-                </p>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-8 rounded-[28px] border border-black/[0.04] bg-gradient-to-b from-[#132033]/95 to-[#162b44]/95 p-6 text-white shadow-[0_16px_40px_rgba(19,32,51,0.18)] sm:p-8">
-            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/60">
-              Custom Research Ecosystems
-            </p>
-            <p className="mt-3 text-base font-medium leading-relaxed text-white/90">
-              For complex research questions requiring additional methodologies, we design a
-              customized workflow in collaboration with the client and relevant research partners.
-              Methodology is always matched to the question, not the other way around.
-            </p>
-          </div>
-        </section>
-
-        <section className="mt-10">
-          <div className="max-w-2xl">
-            <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[#7c8da5]">
-              Key Principles We Apply
-            </p>
-            <h2 className="mt-3 text-2xl font-black tracking-tight text-[#132033] sm:text-4xl">
-              Brain rules we design around every time.
-            </h2>
-          </div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {principles.map((principle) => (
-              <article
-                key={principle.title}
-                className="rounded-[28px] border border-black/[0.04] bg-white/85 p-6 shadow-[0_12px_34px_rgba(30,41,59,0.05)] backdrop-blur-xl"
-              >
-                <h3 className="text-xl font-black tracking-tight text-[#132033]">
-                  {principle.title}
-                </h3>
-                <p className="mt-3 text-[15px] font-medium leading-relaxed text-[#344861]">
-                  {principle.body}
-                </p>
-              </article>
-            ))}
-          </div>
-        </section>
-      </section>
+        </div>
+      </div>
     </SiteShell>
   );
 }

@@ -1,16 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import FloatingLogos from "./FloatingLogos";
 
+// Updated to exact specifications: Case Studies, Services, The Science, Industries, About
 const navItems = [
-  { label: "Services", href: "/services" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Industries", href: "/industries" },
-  { label: "About", href: "/about" },
-  { label: "Founders", href: "/founders" },
+  { label: "Services",     href: "/services" },
+  { label: "The Science",  href: "/science" },
+  { label: "Industries",   href: "/industries" },
+  { label: "About",        href: "/about" },
 ];
 
 export function SiteShell({
@@ -22,28 +23,42 @@ export function SiteShell({
 }): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setIsOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-white text-[#132033] antialiased selection:bg-[#132033]/10">
       <SiteBackdrop />
 
+      {/* Persistent side-corridor floating logos */}
       <FloatingLogos />
 
       <header className="fixed top-0 left-0 right-0 z-50 w-full pt-3 sm:pt-5">
         <nav className="mx-auto w-[calc(100%-16px)] max-w-[1180px] sm:w-[calc(100%-32px)]">
-          {/* Increased container height from h-14/h-16 to h-18/h-22 */}
-          <div className="flex h-18 sm:h-22 items-center justify-between gap-4 rounded-full border border-black/[0.04] bg-white/80 px-5 shadow-[0_4px_24px_rgba(0,0,0,0.03)] backdrop-blur-xl sm:px-8 md:px-10">
-            <Link href="/" className="shrink-0 flex items-center active:scale-95 transition-transform duration-150">
-              {/* Boosted logo dimensions and height classes */}
+          <div className="flex h-16 sm:h-20 items-center justify-between gap-3 rounded-full border border-black/[0.06] bg-white/90 px-4 sm:px-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] backdrop-blur-xl">
+            
+            {/* Header Brand Logo */}
+            <Link
+              href="/"
+              onClick={() => setIsOpen(false)}
+              className="shrink-0 flex items-center transition-transform duration-150 active:scale-95"
+            >
               <Image
                 src="/logos/logo.png"
                 alt="MyelinSheets"
                 width={280}
                 height={70}
                 priority
-                className="h-11 sm:h-14 md:h-16 w-auto object-contain"
+                className="h-10 sm:h-14 md:h-16 w-auto max-w-[190px] sm:max-w-none object-contain"
               />
             </Link>
 
+            {/* Desktop Navigation Links */}
             <div className="hidden items-center gap-6 md:flex">
               <Link
                 href="/"
@@ -66,7 +81,8 @@ export function SiteShell({
               ))}
             </div>
 
-            <div className="flex items-center gap-2">
+            {/* Actions */}
+            <div className="flex items-center gap-2 shrink-0">
               <Link
                 href="/contact"
                 className="hidden sm:inline-flex rounded-full bg-[#132033] px-5 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.08em] text-white transition active:scale-95 hover:bg-[#0f172a]"
@@ -77,41 +93,67 @@ export function SiteShell({
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle Menu"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.04] bg-white/90 text-[#132033] shadow-sm transition active:scale-90 md:hidden"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.06] bg-white text-[#132033] shadow-sm transition active:scale-90 md:hidden"
               >
-                <div className="relative flex h-4 w-4 flex-col justify-between">
-                  <span className={`h-0.5 w-full bg-current transition-transform duration-200 ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
-                  <span className={`h-0.5 w-full bg-current transition-opacity duration-150 ${isOpen ? "opacity-0" : ""}`} />
-                  <span className={`h-0.5 w-full bg-current transition-transform duration-200 ${isOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+                <div className="relative flex h-3.5 w-3.5 sm:h-4 sm:w-4 flex-col justify-between">
+                  <span
+                    className={`h-0.5 w-full bg-current transition-transform duration-200 ${
+                      isOpen ? "rotate-45 translate-y-[6px] sm:translate-y-[7px]" : ""
+                    }`}
+                  />
+                  <span
+                    className={`h-0.5 w-full bg-current transition-opacity duration-150 ${
+                      isOpen ? "opacity-0" : ""
+                    }`}
+                  />
+                  <span
+                    className={`h-0.5 w-full bg-current transition-transform duration-200 ${
+                      isOpen ? "-rotate-45 -translate-y-[6px] sm:-translate-y-[7px]" : ""
+                    }`}
+                  />
                 </div>
               </button>
             </div>
           </div>
 
+          {/* Mobile Drawer */}
           <div
-            className={`mt-2 flex flex-col gap-1 rounded-2xl border border-black/[0.04] bg-white/90 p-2 shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-all duration-300 md:hidden origin-top ${
-              isOpen ? "opacity-100 scale-100 max-h-72" : "opacity-0 scale-95 max-h-0 pointer-events-none overflow-hidden"
+            className={`mt-2 flex flex-col gap-1 rounded-2xl border border-black/[0.06] bg-white/95 p-3 shadow-[0_12px_40px_rgba(0,0,0,0.12)] backdrop-blur-2xl transition-all duration-300 md:hidden origin-top overflow-y-auto ${
+              isOpen
+                ? "opacity-100 scale-100 max-h-[80vh]"
+                : "opacity-0 scale-95 max-h-0 pointer-events-none overflow-hidden"
             }`}
           >
-            <MobileNavLink href="/" active={activeHref === "/"}>
+            <MobileNavLink href="/" active={activeHref === "/"} onClick={() => setIsOpen(false)}>
               Home
             </MobileNavLink>
             {navItems.map((item) => (
-              <MobileNavLink key={item.href} href={item.href} active={activeHref === item.href}>
+              <MobileNavLink
+                key={item.href}
+                href={item.href}
+                active={activeHref === item.href}
+                onClick={() => setIsOpen(false)}
+              >
                 {item.label}
               </MobileNavLink>
             ))}
-            <MobileNavLink href="/contact" active={activeHref === "/contact"}>
-              Contact / Book Call
+            <div className="my-1.5 border-t border-black/[0.06]" />
+            <MobileNavLink
+              href="/contact"
+              active={activeHref === "/contact"}
+              onClick={() => setIsOpen(false)}
+            >
+              Book a Call
             </MobileNavLink>
           </div>
         </nav>
       </header>
 
-      <main className="relative z-10 pt-28 sm:pt-40 px-4 sm:px-0">{children}</main>
+      {/* Main Content Viewport */}
+      <main className="relative z-10 pt-24 sm:pt-36 px-4 sm:px-0">{children}</main>
 
+      {/* Global Footer */}
       <footer className="relative mt-20 overflow-hidden bg-[#e8e8e8]">
-        {/* ---------- Wave ---------- */}
         <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
           <svg
             viewBox="0 0 1440 180"
@@ -127,7 +169,6 @@ export function SiteShell({
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 pt-24 pb-14">
           <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr_1fr]">
-            {/* ---------- Brand ---------- */}
             <div>
               <div className="flex items-center gap-4">
                 <img
@@ -142,7 +183,6 @@ export function SiteShell({
               </p>
             </div>
 
-            {/* ---------- Navigation ---------- */}
             <div>
               <h4 className="mb-6 text-sm font-black uppercase tracking-[0.25em] text-[#5d5d5d]">
                 Navigation
@@ -180,7 +220,6 @@ export function SiteShell({
               </ul>
             </div>
 
-            {/* ---------- Contact ---------- */}
             <div>
               <h4 className="mb-6 text-sm font-black uppercase tracking-[0.25em] text-[#5d5d5d]">
                 Contact
@@ -210,23 +249,20 @@ export function SiteShell({
             </div>
           </div>
 
-          {/* Divider */}
           <div className="my-12 h-px w-full bg-black/10" />
 
-          {/* Bottom */}
           <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
             <p className="text-sm font-semibold text-[#666]">
               © 2026 MyelinSheets. All rights reserved.
             </p>
-            <p className="text-sm text-[#777]">Research → Strategy → Growth</p>
+            <p className="text-sm text-[#777]">Research → Strategy → Growth[cite: 1]</p>
           </div>
         </div>
 
-        {/* ---------- Giant Typography ---------- */}
         <div className="relative z-10 px-4 pb-4">
           <p
             className="select-none text-center font-black leading-[0.82] tracking-[-0.01em] text-[#707070]/30"
-            style={{ fontSize: "clamp(3rem,12vw,12rem)" }}
+            style={{ fontSize: "clamp(3rem, 12vw, 12rem)" }}
           >
             MYELINSHEETS
           </p>
@@ -249,15 +285,18 @@ function SiteBackdrop(): React.JSX.Element {
 function MobileNavLink({
   href,
   active,
+  onClick,
   children,
 }: {
   href: string;
   active: boolean;
+  onClick?: () => void;
   children: React.ReactNode;
 }): React.JSX.Element {
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={`w-full block rounded-xl px-4 py-3 text-[11px] font-black uppercase tracking-[0.1em] transition-all duration-150 active:scale-[0.99] ${
         active ? "bg-[#132033] text-white shadow-sm" : "bg-transparent text-[#51657f] active:bg-black/[0.03]"
       }`}

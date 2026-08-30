@@ -1,262 +1,127 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { caseStudies, type CaseStudy, type CaseStudyRegion } from "@/data/caseStudies";
 
-type FilterKey = "All Brands" | CaseStudyRegion;
-
-const filters: FilterKey[] = ["All Brands", "Global", "India"];
-const filterDescriptions: Record<FilterKey, string> = {
-  "All Brands": "Browse the full scientific record across every featured brand.",
-  Global: "See the global studies that shaped modern neuromarketing practice.",
-  India: "Explore India-specific examples built on culture, memory, and identity.",
-};
-
-const statTones: Record<CaseStudyRegion, string> = {
-  Global: "from-[#dbeafe] via-white to-[#eef2ff] text-[#163f7a]",
-  India: "from-[#fef3c7] via-white to-[#ffedd5] text-[#8a4b06]",
-};
-
-function filterStudies(items: CaseStudy[], activeFilter: FilterKey): CaseStudy[] {
-  if (activeFilter === "All Brands") {
-    return items;
-  }
-
-  return items.filter((item) => item.tag === activeFilter);
+interface CaseStudy {
+  id: number;
+  brand: string;
+  slug: string;
+  category: "Global" | "India";
+  tag: string;
+  stat: string;
+  headline: string;
 }
 
-export default function CaseStudiesContent(): React.JSX.Element {
-  const [activeFilter, setActiveFilter] = useState<FilterKey>("All Brands");
+const caseStudies: CaseStudy[] = [
+  { id: 1, brand: "Coca-Cola", slug: "coca-cola", category: "Global", tag: "Global", stat: "75%", headline: "Brand > Taste. Every Time." },
+  { id: 2, brand: "Pepsi", slug: "pepsi", category: "Global", tag: "Global", stat: "50/50", headline: "Won the Taste Test. Lost the Market." },
+  { id: 3, brand: "Lay's", slug: "lays", category: "Global", tag: "Global", stat: "195M+", headline: "A Bag Redesign. 195M Minds Changed." },
+  { id: 4, brand: "Google", slug: "google", category: "Global", tag: "Global", stat: "$200M", headline: "41 Shades of Blue. $200M." },
+  { id: 5, brand: "Campbell's", slug: "campbells", category: "Global", tag: "Global", stat: "1,500", headline: "1,500 Minds to Perfect a Label." },
+  { id: 6, brand: "Hyundai", slug: "hyundai", category: "Global", tag: "Global", stat: "EEG-Led", headline: "Redesigned by the Brain." },
+  { id: 7, brand: "Mercedes-Benz", slug: "mercedes-benz", category: "Global", tag: "Global", stat: "+12%", headline: "The Brain Sees a Face in Every Car." },
+  { id: 8, brand: "PayPal", slug: "paypal", category: "Global", tag: "Global", stat: "+20%", headline: "Security vs Speed. Brain Chose Speed." },
+  { id: 9, brand: "Amul", slug: "amul", category: "India", tag: "India", stat: "85%", headline: "50 Years of Neuromarketing. Accidentally." },
+  { id: 10, brand: "Fevicol", slug: "fevicol", category: "India", tag: "India", stat: "60yr", headline: "No Celebrities. Pure Neuroscience." },
+  { id: 11, brand: "Tata Tea", slug: "tata-tea", category: "India", tag: "India", stat: "Movement", headline: "When Tea Woke a Nation." },
+  { id: 12, brand: "Cadbury India", slug: "cadbury-india", category: "India", tag: "India", stat: "#1", headline: "The Science of Making India Feel." },
+  { id: 13, brand: "Tanishq", slug: "tanishq", category: "India", tag: "India", stat: "Top 3", headline: "Jewellery That Speaks the Indian Brain." },
+];
 
-  const visibleStudies = useMemo(
-    () => filterStudies(caseStudies, activeFilter),
-    [activeFilter],
-  );
-  const globalCount = useMemo(
-    () => caseStudies.filter((study) => study.tag === "Global").length,
-    [],
-  );
-  const indiaCount = useMemo(
-    () => caseStudies.filter((study) => study.tag === "India").length,
-    [],
-  );
+export default function CaseStudiesContent() {
+  const [filter, setFilter] = useState<"All Brands" | "Global" | "India">("All Brands");
+
+  const filteredStudies = caseStudies.filter((item) => {
+    if (filter === "Global") return item.category === "Global";
+    if (filter === "India") return item.category === "India";
+    return true;
+  });
 
   return (
-    <div className="relative overflow-hidden bg-white text-[#132033]">
-      <CaseStudiesBackdrop />
+    <div className="relative min-h-screen text-[#132033]">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-12 pb-24">
+        
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <span className="text-[11px] font-extrabold tracking-[0.25em] uppercase text-[#64748b] block mb-3">
+            PUBLISHED RESEARCH
+          </span>
+          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl tracking-tight leading-[1.1] text-[#132033] mb-6">
+            Case Studies
+          </h1>
+          <p className="text-base sm:text-lg text-[#51657f] leading-relaxed">
+            Peer-reviewed, published neuromarketing research from global and Indian brands. These are not our claims — they are the scientific record. The same principles power everything we do at Myelin Sheets.
+          </p>
+        </div>
 
-      <main className="relative z-10 mx-auto max-w-[1180px] px-6 pb-20 pt-10 md:px-10 lg:px-12">
-        <section className="grid gap-10 pb-18 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
-          <div className="max-w-[760px]">
-            <p className="text-[12px] font-black uppercase tracking-[0.22em] text-[#56708f]">
-              Published Research
-            </p>
-            <h1 className="mt-4 max-w-[10ch] text-[54px] font-black leading-[0.94] tracking-[-0.04em] text-[#132033] sm:text-[68px] lg:text-[86px]">
-              Case Studies
-            </h1>
-            <p className="mt-6 max-w-[720px] text-[17px] font-medium leading-[1.65] text-[#4b607c] md:text-[19px]">
-              Peer-reviewed, published neuromarketing research from global and Indian brands.
-              These are not our claims, they are the scientific record. The same principles power
-              everything we do at Myelin Sheets.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <SummaryChip label="All Brands" value={caseStudies.length.toString()} />
-              <SummaryChip label="Global" value={globalCount.toString()} />
-              <SummaryChip label="India" value={indiaCount.toString()} />
-            </div>
-          </div>
+        {/* Filter Pills */}
+        <div className="flex justify-center items-center gap-2 mb-14">
+          {(["All Brands", "Global", "India"] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setFilter(tab)}
+              className={`rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-150 ${
+                filter === tab
+                  ? "bg-[#132033] text-white shadow-sm"
+                  : "bg-slate-100 text-[#51657f] hover:bg-slate-200"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
 
-          <div className="rounded-[32px] border border-black/[0.04] bg-white/45 p-6 shadow-[0_8px_32px_0_rgba(0,0,0,0.04)] backdrop-blur-2xl">
-            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#7c8da5]">
-              Page Snapshot
-            </p>
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              <MetricCard value="13" label="published brand studies" />
-              <MetricCard value="8" label="global research examples" />
-              <MetricCard value="5" label="India-focused examples" />
-              <MetricCard value="2" label="filter paths to browse" />
-            </div>
-            <p className="mt-4 text-[13px] font-medium leading-[1.5] text-[#5d718c]">
-              Every card below follows the same proof format from the content doc: tag, stat,
-              brand, headline, and a case-study cue.
-            </p>
-          </div>
-        </section>
-
-        <section className="rounded-[40px] border border-black/[0.04] bg-white/45 p-6 shadow-[0_8px_32px_0_rgba(0,0,0,0.04)] backdrop-blur-2xl md:p-8 lg:p-10">
-          <div className="flex flex-col gap-6 border-b border-[#132033]/8 pb-8 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[#7c8da5]">
-                Research Grid
-              </p>
-              <h2 id="research-grid" className="mt-2 text-[30px] font-black tracking-[-0.03em] text-[#132033] md:text-[40px]">
-                Evidence the market could already see
-              </h2>
-              <p className="mt-3 max-w-[620px] text-[16px] font-medium leading-[1.6] text-[#5d718c]">
-                A cleaner way to scan the published research: filter by market, compare the key
-                signal, and move through each study without the page feeling packed.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-3 md:max-w-[360px] md:justify-end">
-              {filters.map((filter) => {
-                const isActive = filter === activeFilter;
-
-                return (
-                  <button
-                    key={filter}
-                    type="button"
-                    onClick={() => setActiveFilter(filter)}
-                    className={`rounded-full border px-4 py-2 text-[12px] font-black uppercase tracking-[0.12em] transition ${
-                      isActive
-                        ? "border-[#132033] bg-[#132033] text-white shadow-[0_12px_30px_rgba(15,23,42,0.18)]"
-                        : "border-[#132033]/10 bg-white text-[#51657f] hover:border-[#132033]/20 hover:text-[#132033]"
-                    }`}
-                  >
-                    {filter}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="mt-7 flex flex-col gap-4 rounded-[28px] border border-black/[0.04] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(248,251,255,0.96))] px-5 py-5 shadow-[0_10px_28px_rgba(15,23,42,0.04)] md:flex-row md:items-center md:justify-between md:px-6">
-            <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#7c8da5]">
-                Active View
-              </p>
-              <p className="mt-1 text-[16px] font-bold leading-[1.4] text-[#2b3c54]">
-                {filterDescriptions[activeFilter]}
-              </p>
-            </div>
-            <div className="inline-flex w-fit items-center gap-2 rounded-full bg-[#132033] px-4 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-white">
-              <span>{visibleStudies.length}</span>
-              <span>brand cards visible</span>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-2 2xl:grid-cols-3">
-            {visibleStudies.map((study) => (
-              <article
-                key={study.id}
-                className="group relative flex min-h-[340px] flex-col overflow-hidden rounded-[32px] border border-black/[0.04] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(246,250,255,0.9))] p-7 shadow-[0_12px_34px_rgba(30,41,59,0.05)] transition duration-300 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_22px_52px_rgba(30,41,59,0.1)] md:p-8"
-              >
-                <div
-                  className="pointer-events-none absolute right-0 top-0 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.82),transparent_62%)] opacity-90 transition duration-300 group-hover:scale-110"
-                  aria-hidden="true"
-                />
-                <div
-                  className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/85 to-transparent"
-                  aria-hidden="true"
-                />
-
-                <div className="relative z-10 flex items-start justify-between gap-4">
-                  <div>
-                    <span className="inline-flex rounded-full border border-[#132033]/10 bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#72839a]">
-                      {study.tag}
-                    </span>
-                    <p className="mt-4 text-[11px] font-black uppercase tracking-[0.18em] text-[#90a0b5]">
-                      Study {study.id.toString().padStart(2, "0")}
-                    </p>
-                  </div>
-
-                  <div
-                    className={`rounded-[22px] bg-gradient-to-br px-4 py-3 text-right shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] ${statTones[study.tag]}`}
-                  >
-                    <p className="text-[11px] font-black uppercase tracking-[0.18em] opacity-65">
-                      Signal
-                    </p>
-                    <p className="mt-1 text-[24px] font-black leading-none tracking-[-0.04em]">
-                      {study.stat}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="relative z-10 mt-12 flex-1">
-                  <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#8fa0b5]">
-                    {study.tag} Brand
-                  </p>
-                  <h3 className="text-[28px] font-black leading-[1] tracking-[-0.04em] text-[#132033]">
-                    {study.brand}
-                  </h3>
-                  <p className="mt-4 max-w-[30ch] text-[19px] font-semibold leading-[1.38] tracking-[-0.02em] text-[#344861]">
-                    {study.headline}
-                  </p>
-                </div>
-
-                <div className="relative z-10 mt-12 flex items-center justify-between border-t border-[#132033]/8 pt-6">
-                  <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#8a9bb1]">
-                    Published evidence
+        {/* Case Studies Grid with Dynamic Links */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+          {filteredStudies.map((study) => (
+            <Link
+              key={study.id}
+              href={`/case-studies/${study.slug}`}
+              className="group rounded-3xl bg-white border border-black/[0.06] p-7 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-200 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="rounded-full bg-slate-100 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-slate-600">
+                    {study.tag}
                   </span>
-                  <Link
-                    href={`/case-studies/${study.slug}`}
-                    aria-label={`View case study for ${study.brand}`}
-                    className="inline-flex items-center gap-2 text-[12px] font-black uppercase tracking-[0.12em] text-[#132033]"
-                  >
-                    View case study
-                    <svg
-                      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="M13 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                  <span className="font-serif text-2xl font-bold text-[#132033]">
+                    {study.stat}
+                  </span>
                 </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-}
+                <h3 className="text-xs font-bold uppercase tracking-widest text-[#64748b] mb-1">
+                  {study.brand}
+                </h3>
+                <h4 className="font-serif text-xl text-[#132033] leading-snug mb-6">
+                  {study.headline}
+                </h4>
+              </div>
 
-function MetricCard({
-  value,
-  label,
-}: {
-  value: string;
-  label: string;
-}): React.JSX.Element {
-  return (
-    <div className="rounded-[22px] border border-[#132033]/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(242,247,255,0.96))] px-4 py-5">
-      <p className="text-[28px] font-black leading-none tracking-[-0.04em] text-[#132033]">{value}</p>
-      <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[#72839a]">{label}</p>
-    </div>
-  );
-}
+              <div className="pt-4 border-t border-black/[0.04] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#64748b] group-hover:text-[#132033] transition-colors">
+                <span>View case study</span>
+                <span>→</span>
+              </div>
+            </Link>
+          ))}
+        </div>
 
-function SummaryChip({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}): React.JSX.Element {
-  return (
-    <div className="inline-flex items-center gap-3 rounded-full border border-[#132033]/10 bg-white/90 px-4 py-2 shadow-[0_8px_22px_rgba(15,23,42,0.05)]">
-      <span className="text-[11px] font-black uppercase tracking-[0.14em] text-[#7c8da5]">{label}</span>
-      <span className="text-[15px] font-black tracking-[-0.03em] text-[#132033]">{value}</span>
-    </div>
-  );
-}
+        {/* Bottom Callout */}
+        <div className="rounded-3xl bg-[#132033] text-white p-8 sm:p-12 text-center max-w-3xl mx-auto shadow-lg">
+          <h3 className="font-serif text-2xl sm:text-3xl mb-3 text-slate-100">
+            Want to see these metrics on your next campaign?
+          </h3>
+          <p className="text-slate-400 text-sm mb-8 font-normal">
+            Book a 30-minute discovery call to explore what neuroscience can achieve for your brand.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex rounded-full px-8 py-3.5 bg-white text-[#132033] font-bold text-xs uppercase tracking-wider hover:bg-slate-100 transition-colors"
+          >
+            Book a Discovery Call
+          </Link>
+        </div>
 
-function CaseStudiesBackdrop(): React.JSX.Element {
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div className="absolute inset-0 opacity-[0.34] mix-blend-multiply bg-[url('/assets/neural-web.svg')] bg-[length:1200px_auto] bg-center bg-repeat-y md:bg-[length:1500px_auto]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.62),rgba(255,255,255,0.14)_28%,rgba(255,255,255,0.38)_62%,rgba(255,255,255,0.8)_100%)]" />
-      <div className="absolute inset-x-0 top-0 h-[460px] bg-[radial-gradient(circle_at_20%_18%,rgba(195,224,255,0.5),transparent_28%),radial-gradient(circle_at_82%_10%,rgba(255,228,196,0.42),transparent_20%)]" />
-      <div className="absolute left-[-14rem] top-[22rem] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(214,231,255,0.42),transparent_62%)] blur-3xl" />
-      <div className="absolute right-[-10rem] top-[34rem] h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(255,236,214,0.38),transparent_62%)] blur-3xl" />
-      <div className="absolute left-1/2 top-[58rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(223,241,255,0.32),transparent_64%)] blur-3xl" />
+      </div>
     </div>
   );
 }
