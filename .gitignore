@@ -37,5 +37,6 @@ Thumbs.db
 # Freebuff and Todo files
 .tmp/
 .todo/
-.todo.md
+# todo.md
+.todo.md/
 .freebuff/
