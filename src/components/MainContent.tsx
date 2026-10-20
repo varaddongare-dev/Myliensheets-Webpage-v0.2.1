@@ -347,11 +347,11 @@ function NeuronBackdrops(): React.JSX.Element {
   return (
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
       <div className="neuron-backdrop neuron-left absolute -left-[24vw] top-[23rem] w-[760px] rotate-180 opacity-45 md:-left-[14vw] md:w-[980px] lg:w-[1120px]">
-        <img src="/assets/neuron.png" alt="" className="h-auto w-full object-contain" />
+        <img src="/assets/neuron.png" alt="" width="760" className="h-auto w-full object-contain" />
       </div>
       
       <div className="neuron-backdrop neuron-right absolute -right-[24vw] top-[150rem] w-[760px] opacity-45 md:-right-[14vw] md:w-[980px] lg:w-[1120px]">
-        <img src="/assets/neuron.png" alt="" className="h-auto w-full object-contain" />
+        <img src="/assets/neuron.png" alt="" width="760" className="h-auto w-full object-contain" />
       </div>
     </div>
   );
