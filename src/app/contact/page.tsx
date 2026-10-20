@@ -19,13 +19,13 @@ export default function ContactPage() {
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
             <span className="text-[11px] font-extrabold tracking-[0.25em] uppercase text-[#64748b] block mb-3">
-              GET STARTED[cite: 1]
+              GET STARTED
             </span>
             <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl tracking-tight leading-[1.1] text-[#132033] mb-6">
-              Book a Discovery Call[cite: 1]
+              Book a Discovery Call
             </h1>
             <p className="text-base sm:text-lg text-[#51657f] leading-relaxed">
-              30 minutes. No commitment. We will tell you exactly where neuromarketing can move the needle for your brand[cite: 1].
+              30 minutes. No commitment. We will tell you exactly where neuromarketing can move the needle for your brand.
             </p>
           </div>
 
@@ -38,7 +38,7 @@ export default function ContactPage() {
                   <div className="text-4xl">✨</div>
                   <h3 className="font-serif text-2xl text-[#132033]">Request Received</h3>
                   <p className="text-sm text-[#51657f] max-w-md mx-auto leading-relaxed">
-                    We will review your submission within 24 hours and contact you to schedule your discovery call[cite: 1].
+                    We will review your submission within 24 hours and contact you to schedule your discovery call.
                   </p>
                 </div>
               ) : (

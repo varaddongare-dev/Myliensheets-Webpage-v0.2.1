@@ -255,7 +255,7 @@ export function SiteShell({
             <p className="text-sm font-semibold text-[#666]">
               © 2026 MyelinSheets. All rights reserved.
             </p>
-            <p className="text-sm text-[#777]">Research → Strategy → Growth[cite: 1]</p>
+            <p className="text-sm text-[#777]">Research → Strategy → Growth</p>
           </div>
         </div>
 
