@@ -241,7 +241,7 @@ export default function MainContent(): React.JSX.Element {
             What We Do
           </h2>
           <p className="mx-auto mt-5 max-w-[650px] text-[15px] font-bold leading-[1.35] text-[#666666]/60">
-            One mission - make your marketing work with the brain, not against it.
+            One mission make your marketing work with the brain, not against it.
           </p>
 
           <div className="mt-12 space-y-4 text-left">

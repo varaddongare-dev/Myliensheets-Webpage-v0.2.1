@@ -12,7 +12,7 @@ const services = [
     hook: "Know how it lands before you spend.",
     badge: "40% avg. improvement in ad recall",
     description:
-      "Before you spend on media, know exactly how your creative lands in the brain. We use EEG, eye-tracking, and behavioural data to measure genuine emotional response, attention peaks, and memory encoding — not what people say they feel.",
+      "Before you spend on media, know exactly how your creative lands in the brain. We use EEG eye-tracking and behavioural data to measure genuine emotional response, attention peaks and memory encoding not what people say they feel.",
   },
   {
     number: "02",
@@ -39,7 +39,7 @@ const services = [
     hook: "The decision your data never saw.",
     badge: "95% of decisions are subconscious",
     description:
-      "Go beyond surveys and focus groups. We measure actual decision-making at the neural level — revealing the subconscious triggers, cognitive biases, and emotional drivers behind every purchase decision your customer makes.",
+      "Go beyond surveys and focus groups. We measure actual decision-making at the neural level revealing the subconscious triggers, cognitive biases, and emotional drivers behind every purchase decision your customer makes.",
   },
   {
     number: "05",
@@ -48,7 +48,7 @@ const services = [
     hook: "Every pixel is a conversation.",
     badge: "Google moved $200M with one tweak",
     description:
-      "Test your website, app, and digital ads using eye-tracking and behavioural data to measure visual attention, cognitive load, and emotional response — page by page, element by element.",
+      "Test your website, app, and digital ads using eye-tracking and behavioural data to measure visual attention, cognitive load and emotional response page by page element by element.",
   },
   {
     number: "06",
@@ -57,7 +57,7 @@ const services = [
     hook: "Built around how the brain decides.",
     badge: "End-to-end neuro-informed strategy",
     description:
-      "Translate neural data into actionable creative briefs, messaging hierarchies, and campaign architectures. We build marketing strategy around how the brain actually makes decisions — not how marketers assume it does.",
+      "Translate neural data into actionable creative briefs, messaging hierarchies and campaign architectures. We build marketing strategy around how the brain actually makes decisions not how marketers assume it does.",
   },
 ];
 
@@ -119,7 +119,7 @@ export default function ServicesPage() {
               Services
             </h1>
             <p className="text-base sm:text-lg text-[#51657f] leading-relaxed">
-              One mission — make your marketing work with the brain, not against it. Hover over each service to see the methodology.
+              One mission make your marketing work with the brain, not against it. Hover over each service to see the methodology.
             </p>
           </div>
 
@@ -235,7 +235,7 @@ export default function ServicesPage() {
                 Custom-scoped to your question.
               </h3>
               <p className="text-sm text-[#51657f] leading-relaxed">
-                We do not have package pricing — every engagement is scoped to your specific research question, audience, and timeline[cite: 1]. The discovery call helps us understand your challenge before we design a proposal[cite: 1].
+                We do not have package pricing every engagement is scoped to your specific research question audience and timeline cite 1. The discovery call helps us understand your challenge before we design a proposal cite 1.
               </p>
             </div>
             <Link

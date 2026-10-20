@@ -51,7 +51,7 @@ export default function CaseStudiesContent() {
             Case Studies
           </h1>
           <p className="text-base sm:text-lg text-[#51657f] leading-relaxed">
-            Peer-reviewed, published neuromarketing research from global and Indian brands. These are not our claims — they are the scientific record. The same principles power everything we do at Myelin Sheets.
+            Peer-reviewed, published neuromarketing research from global and Indian brands. These are not our claims they are the scientific record. The same principles power everything we do at Myelin Sheets.
           </p>
         </div>
 

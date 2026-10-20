@@ -17,14 +17,14 @@ const tools = [
     name: "Visual Attention Mapping",
     tagline: "Gaze Path & Fixation",
     description:
-      "Maps exactly where attention goes on a webpage, ad, or package. Identifies what consumers actually look at vs. what they say they notice — often completely different.",
+      "Maps exactly where attention goes on a webpage, ad, or package. Identifies what consumers actually look at vs. what they say they notice often completely different.",
   },
   {
     code: "Behavioural Data",
     name: "Implicit Behavioural Testing",
     tagline: "Subconscious Reaction Latency",
     description:
-      "Implicit behavioural testing captures decision patterns, hesitation, and response sequences that reveal subconscious preferences — without asking the participant a single direct question.",
+      "Implicit behavioural testing captures decision patterns, hesitation, and response sequences that reveal subconscious preferences without asking the participant a single direct question.",
   },
 ];
 
@@ -32,7 +32,7 @@ const principles = [
   {
     title: "Priming",
     hook: "Stimulus alters processing",
-    body: "Exposure to a stimulus (like a brand logo) changes how the brain processes subsequent information. Brand salience on every touchpoint is scientifically — not just strategically — important.",
+    body: "Exposure to a stimulus (like a brand logo) changes how the brain processes subsequent information. Brand salience on every touchpoint is scientifically not just strategically important.",
   },
   {
     title: "Anchoring",
@@ -76,7 +76,7 @@ export default function SciencePage() {
               Your brain decides. Your mind just explains it later.
             </h1>
             <p className="text-base sm:text-lg text-[#51657f] leading-relaxed font-normal">
-              Before you picked a product, clicked an ad, or chose one brand over another — your brain had already made the call milliseconds before conscious thought. Driven by emotion, memory, and instinct you weren't even aware of.
+              Before you picked a product, clicked an ad, or chose one brand over another your brain had already made the call milliseconds before conscious thought. Driven by emotion, memory, and instinct you weren't even aware of.
             </p>
           </div>
 
@@ -91,10 +91,10 @@ export default function SciencePage() {
               </div>
               <div className="md:col-span-8 space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
                 <p>
-                  Traditional research — surveys, focus groups, A/B tests — only reaches the 5% that's conscious. The other 95% has always been a blind spot.
+                  Traditional research surveys focus groups A/B tests only reaches the 5% that's conscious. The other 95% has always been a blind spot.
                 </p>
                 <p>
-                  By measuring real brain responses to ads, packaging, and creative — using EEG, eye-tracking, and behavioural analytics — neuromarketing reveals what consumers actually feel, not what they say they feel. Not after the campaign. At the exact millisecond.
+                  By measuring real brain responses to ads, packaging and creative using EEG eye-tracking and behavioural analytics neuromarketing reveals what consumers actually feel not what they say they feel. Not after the campaign. At the exact millisecond.
                 </p>
               </div>
             </div>
@@ -135,7 +135,7 @@ export default function SciencePage() {
             </div>
 
             <div className="mt-8 rounded-2xl bg-slate-50 border border-black/[0.04] p-6 text-center text-sm text-[#51657f] leading-relaxed">
-              For complex research questions requiring additional methodologies, we design a customised workflow in collaboration with the client and relevant research partners. Methodology is always matched to the question — not the other way around.
+              For complex research questions requiring additional methodologies, we design a customised workflow in collaboration with the client and relevant research partners. Methodology is always matched to the question not the other way around.
             </div>
           </div>
 

@@ -56,10 +56,10 @@ export const services = [
 ] as const;
 
 export const serviceSteps = [
-  "01 · Discovery — We map your brand, audience, and marketing challenge in depth before recommending anything.",
-  "02 · Research Design — We design the right neuromarketing methodology for your specific question and audience.",
-  "03 · Testing — We run EEG, eye-tracking, or behavioral studies with your exact target audience.",
-  "04 · Strategy Delivery — Neural insights translated into actionable creative briefs, messaging hierarchies, and brand strategy.",
+  "01 · Discovery We map your brand, audience, and marketing challenge in depth before recommending anything.",
+  "02 · Research Design We design the right neuromarketing methodology for your specific question and audience.",
+  "03 · Testing We run EEG, eye-tracking, or behavioral studies with your exact target audience.",
+  "04 · Strategy Delivery Neural insights translated into actionable creative briefs, messaging hierarchies and brand strategy.",
 ] as const;
 
 export const researchTools = [

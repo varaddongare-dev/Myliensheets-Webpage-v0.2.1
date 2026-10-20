@@ -33,3 +33,9 @@ next-env.d.ts
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Freebuff and Todo files
+.tmp/
+.todo/
+.todo.md
+.freebuff/

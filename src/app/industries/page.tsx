@@ -13,7 +13,7 @@ const industries = [
   {
     icon: "🏪",
     title: "Retail & E-commerce",
-    desc: "From store layout to homepage design, every consumer touchpoint has a neurological signature. We optimise the path from attention to purchase at every step — online and offline.",
+    desc: "From store layout to homepage design, every consumer touchpoint has a neurological signature. We optimise the path from attention to purchase at every step online and offline.",
   },
   {
     icon: "🏦",
@@ -28,7 +28,7 @@ const industries = [
   {
     icon: "🚗",
     title: "Automotive",
-    desc: "The car purchase is one of the most emotionally complex buying journeys. We map the neural triggers at every stage — from first ad impression to showroom experience to the moment of decision.",
+    desc: "The car purchase is one of the most emotionally complex buying journeys. We map the neural triggers at every stage from first ad impression to showroom experience to the moment of decision.",
   },
   {
     icon: "💡",
@@ -43,7 +43,7 @@ const industries = [
   {
     icon: "🚀",
     title: "Startups & Brand Building",
-    desc: "For early-stage brands, neural efficiency matters most — every touchpoint must work harder. We help startups build strong brand memory from day one, before budgets allow for repetition.",
+    desc: "For early-stage brands, neural efficiency matters most every touchpoint must work harder. We help startups build strong brand memory from day one, before budgets allow for repetition.",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function IndustriesPage() {
               Industries
             </h1>
             <p className="text-base sm:text-lg text-[#51657f] leading-relaxed">
-              Wherever consumers make decisions, brain science can improve how your brand communicates. Neuromarketing is not a niche tool — it is a universal one.
+              Wherever consumers make decisions, brain science can improve how your brand communicates. Neuromarketing is not a niche tool it is a universal one.
             </p>
           </div>
 
@@ -96,7 +96,7 @@ export default function IndustriesPage() {
                 India is the world's most complex consumer market.
               </h3>
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-8">
-                1.4 billion people. 22 official languages. 2,000+ distinct ethnic groups. Cultural, regional, and generational variations that no single survey can capture. Traditional research fails disproportionately in India because the diversity of subconscious consumer triggers is unlike any other market on earth. Neuromarketing — which measures universal neural responses while accounting for cultural variables — is not just useful in India. It is necessary.
+                1.4 billion people. 22 official languages. 2,000+ distinct ethnic groups. Cultural, regional, and generational variations that no single survey can capture. Traditional research fails disproportionately in India because the diversity of subconscious consumer triggers is unlike any other market on earth. Neuromarketing which measures universal neural responses while accounting for cultural variables is not just useful in India. It is necessary.
               </p>
               <Link
                 href="/contact"

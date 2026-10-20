@@ -24,15 +24,15 @@ const founders = [
 const values = [
   {
     title: "Evidence First",
-    body: "Every recommendation we make is grounded in neural evidence — not intuition, opinion, or creative preference. Data over gut, always.",
+    body: "Every recommendation we make is grounded in neural evidence not intuition opinion or creative preference. Data over gut, always.",
   },
   {
     title: "Radical Transparency",
-    body: "We show you exactly what the data says — including findings that challenge your existing assumptions. Uncomfortable truths included.",
+    body: "We show you exactly what the data says including findings that challenge your existing assumptions. Uncomfortable truths included.",
   },
   {
     title: "India Fluency",
-    body: "We understand the Indian consumer's brain — culturally, linguistically, and neurologically. Local insight, not imported frameworks.",
+    body: "We understand the Indian consumer's brain culturally linguistically and neurologically. Local insight, not imported frameworks.",
   },
 ];
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
               About MyelinSheets
             </h1>
             <p className="text-base sm:text-lg text-[#51657f] leading-relaxed">
-              We are not a creative agency. We are not a research firm. We are the bridge — where neuroscience meets brand strategy.
+              We are not a creative agency. We are not a research firm. We are the bridge where neuroscience meets brand strategy.
             </p>
           </div>
 
@@ -64,10 +64,10 @@ export default function AboutPage() {
               Myelin is how the brain builds mastery.
             </h2>
             <p className="text-sm sm:text-base text-[#51657f] leading-relaxed mb-4">
-              Myelin sheaths are the fatty coating around neural pathways in the brain. Every time a neural circuit fires repeatedly, myelin builds up around it — making that pathway faster, stronger, and more automatic. It is literally how habits, skills, and brand memories form in the brain.
+              Myelin sheaths are the fatty coating around neural pathways in the brain. Every time a neural circuit fires repeatedly, myelin builds up around it making that pathway faster, stronger, and more automatic. It is literally how habits, skills, and brand memories form in the brain.
             </p>
             <p className="text-sm sm:text-base text-[#132033] font-medium leading-relaxed">
-              MyelinSheets is named for exactly this: we help brands build thick, strong neural pathways in their customers' minds. Not campaign spikes — permanent memory. Not awareness — identity. We do not just do marketing. We build myelin.
+              MyelinSheets is named for exactly this: we help brands build thick, strong neural pathways in their customers' minds. Not campaign spikes permanent memory. Not awareness identity. We do not just do marketing. We build myelin.
             </p>
           </div>
 
@@ -77,7 +77,7 @@ export default function AboutPage() {
               Most marketing fails because it tries to persuade the rational mind. The rational mind is not where decisions are made.
             </p>
             <p className="text-sm sm:text-base text-[#51657f] leading-relaxed">
-              95% of every purchase decision happens in the subconscious — processed by emotional circuits the customer cannot access, report, or control.
+              95% of every purchase decision happens in the subconscious processed by emotional circuits the customer cannot access, report, or control.
             </p>
             <p className="text-sm sm:text-base text-[#51657f] leading-relaxed">
               We are the translators between what the brain does and what your brand says. We make marketing that works with the brain, not against it.
